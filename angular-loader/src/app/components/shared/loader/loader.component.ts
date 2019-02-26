@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { LoaderService } from '../../../services/loader.service';
 
@@ -7,19 +8,11 @@ import { LoaderService } from '../../../services/loader.service';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.css']
 })
-export class LoaderComponent implements OnInit, OnDestroy {
+export class LoaderComponent {
   color = 'primary';
   mode = 'indeterminate';
   value = 50;
-  isVisible: boolean = false;
-
+  isLoading: Subject<boolean> = this.loaderService.isLoading;
+  
   constructor(private loaderService: LoaderService){}
-  ngOnInit() {
-    this.loaderService.isLoading.subscribe(status => {
-      this.isVisible = status;
-    });
-  }
-  ngOnDestroy() {
-    this.loaderService.isLoading.unsubscribe();
-  }
 }

@@ -8,8 +8,10 @@
     background-color:rgba(74,74,74,.8);
     z-index:99999;
 }
+
 .spinner {
-    position:absolute;
-    top:50%;
-    left:50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
