@@ -1,0 +1,17 @@
+[
+    {
+        "id":"1",
+        "name":"John Smith",
+        "position":"Manager"
+    },
+    {
+        "id":"2",
+        "name":"Johny Bravo",
+        "position":"Employee"
+    },
+    {
+        "id":"3",
+        "name":"Peter",
+        "position":"N/A"
+    }
+]
