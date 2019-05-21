@@ -1,0 +1,24 @@
+{
+  "name": "employee-management",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm run clean && npm run build && aws lambda update-function-code --function-name employees --zip-file fileb://build.zip --publish",
+    "clean": "rm build.zip",
+    "build": "zip build.zip *  -r -x .git/* *.sh tests/* node_modules/aws-sdk/* *.zip package.json package-lock.json app-local.js docker-compose.yml employee-table-model.json",
+    "start": "TABLE='employees' node app-local",
+    "dynamodb-local-run": "docker-compose up",
+    "create-database": "aws dynamodb create-table --cli-input-json file://table-create.json --endpoint-url http://localhost:8080"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.430.0",
+    "aws-serverless-express": "^3.3.6",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "uuid": "^3.3.2"
+  }
+}
