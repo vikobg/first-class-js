@@ -18,7 +18,6 @@ router.get('/employees', (req, res) => {
     const params = {
         TableName: EMPLOYEES_TABLE
     };
-    console.log(params);
     dynamoDb.scan(params, (error, result) => {
         if (error) {
             res.status(400).json({ error: 'Error fetching the employees' });

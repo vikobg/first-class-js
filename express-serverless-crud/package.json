@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "npm run clean && npm run build && aws lambda update-function-code --function-name employees --zip-file fileb://build.zip --publish",
     "clean": "rm build.zip",
-    "build": "zip build.zip *  -r -x .git/* *.sh tests/* node_modules/aws-sdk/* *.zip package.json package-lock.json app-local.js docker-compose.yml employee-table-model.json",
+    "build": "zip -r build.zip node_modules index.js app.js routes.js",
     "start": "TABLE='employees' node app-local",
     "dynamodb-local-run": "docker-compose up",
-    "create-database": "aws dynamodb create-table --cli-input-json file://table-create.json --endpoint-url http://localhost:8080"
+    "create-database": "aws dynamodb create-table --cli-input-json file://employee-table-model.json --endpoint-url http://localhost:8080"
   },
   "author": "",
   "license": "ISC",
