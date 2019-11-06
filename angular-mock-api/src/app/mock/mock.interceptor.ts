@@ -12,6 +12,6 @@ export class HttpMockApiInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         currentMockEndpoint = mockEndpoints[request.method] && mockEndpoints[request.method][request.url] || null;
 
-        return currentMockEndpoint.handler() || next.handle(request);
+        return currentMockEndpoint ? currentMockEndpoint.handler() : next.handle(request);
     }
 }
