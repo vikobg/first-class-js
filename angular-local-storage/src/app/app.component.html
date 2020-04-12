@@ -1,0 +1,7 @@
+<input type="text" (input)="persist('test', $event.target.value)">
+
+<div *ngIf=" localStorageChanges$ | async as localStorageChanges">
+  {{ localStorageChanges.type }}
+  {{ localStorageChanges.key }}
+  {{ localStorageChanges.value }}
+</div>
